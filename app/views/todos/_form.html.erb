@@ -1,0 +1,14 @@
+<%= form_for :todo, url: todos_path do |f|  %>
+
+<div class="field">
+    <%= f.label :Todo1 %>
+    <%= f.text_field :item, :placeholder => "Add new Item" %>
+</div>
+
+
+<div class="action">
+    <%= f.submit %> <br />
+</div>
+
+
+<% end %>
