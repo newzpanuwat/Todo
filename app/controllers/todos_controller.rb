@@ -1,4 +1,6 @@
 class TodosController < ApplicationController
+    before_action :set_todo, only: [:show, :edit, :update, :destroy]
+
     def index
         @todos = Todolist.all
     end
@@ -13,16 +15,13 @@ class TodosController < ApplicationController
     end
 
     def show
-        @todo = Todolist.find(params[:id])
+        @todos = Todolist.find(params[:id])
     end
 
     def update
-        @todo = Todolist.find(params[:id])
-        @todo.update
     end
 
     def edit
-        @todo = Todolist.find(params[:id])
     end
 
     def destroy
@@ -36,5 +35,8 @@ class TodosController < ApplicationController
         params.require(:todo).permit(:item)
     end
 
+    def set_todo
+         @todo = Todolist.find(params[:id])
+    end
 
 end
