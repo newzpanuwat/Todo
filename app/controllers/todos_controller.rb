@@ -1,6 +1,5 @@
 class TodosController < ApplicationController
-    before_action :set_todo, only: [:show, :edit, :update, :destroy]
-
+    
     def index
         @todos = Todolist.all
     end
@@ -10,12 +9,12 @@ class TodosController < ApplicationController
     end
 
     def create
-        @todo = Todolist.create(todo_params)
+        @todo = Todolist.new(todo_params)
         redirect_to todos_path
     end
 
     def show
-        @todos = Todolist.find(params[:id])
+        @todo = Todolist.find(params[:id])
     end
 
     def update
@@ -35,8 +34,5 @@ class TodosController < ApplicationController
         params.require(:todo).permit(:item)
     end
 
-    def set_todo
-         @todo = Todolist.find(params[:id])
-    end
 
 end
